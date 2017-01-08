@@ -1,12 +1,9 @@
-FROM php:7.0-fpm
+FROM php:5.6-fpm
 
 RUN docker-php-ext-install pdo pdo_mysql opcache
 
 RUN apt-get update \
     && apt-get install -y libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng12-dev git
-
-RUN pecl install redis-3.0.0 \
-    && docker-php-ext-enable redis
 
 RUN docker-php-ext-install intl
 
@@ -19,7 +16,7 @@ RUN docker-php-ext-install zip
 
 RUN usermod -u 1000 www-data
 
-RUN git clone git://github.com/phalcon/cphalcon.git -b 2.1.x
+RUN git clone git://github.com/phalcon/cphalcon.git -b 2.0.x
 RUN cd cphalcon/build/ && \
     ./install && \
     cd /tmp && \

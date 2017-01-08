@@ -19,7 +19,7 @@ RUN docker-php-ext-install zip
 
 RUN usermod -u 1000 www-data
 
-RUN git clone git://github.com/phalcon/cphalcon.git
+RUN git clone git://github.com/phalcon/cphalcon.git -b 2.1.x
 RUN cd cphalcon/build/ && \
     ./install && \
     cd /tmp && \
